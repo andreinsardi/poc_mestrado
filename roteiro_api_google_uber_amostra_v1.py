@@ -3,7 +3,6 @@ import sqlite3
 import random
 import time
 import datetime
-import exemplo_banco_dados
 import os
 from datetime import datetime
 from uber_rides.session import Session
@@ -14,34 +13,8 @@ try:
 except NameError:   
     read_input = input
 
-    
-# banco de dados
-os.remove("base_artigo_rae.db") if os.path.exists("base_artigo_rae.db") else None 
-# Criando uma conexão
-conn = sqlite3.connect('base_artigo_rae.db')   
-# Criando um cursor
-c = conn.cursor()
-
-c.execute('create table tb_api_uber_pickup_time '\
-           '(id_consulta integer, '\
-           'json_retorno_api text, '\
-           'dt_hora_consulta text)')
-  
-
-c.execute('create table tb_api_uber_estimate_price'\
-           '(id_consulta integer, '\
-           'json_retorno_api text, '\
-           'dt_hora_consulta text)')
-
-c.execute('create table tb_api_google_directions'\
-           '(id_consulta integer, '\
-           'json_retorno_api text, '\
-           'dt_hora_consulta datetime)')
-# banco de dados 
-
-
 # session api uber
-session = Session(server_token='N4kkHZ1kZr8g-ikt_6NruXcuZKAVIfHMyez6GxwW')
+session = Session(server_token='85aKZSGe0Sm18xm-iH_8UnlvJ7A9imx1MxPUuuAc')
 client = UberRidesClient(session)
 
 #estimete price
@@ -55,7 +28,7 @@ def uber_get_price_estimates(p_client, p_start_latitude, p_start_longitude, p_en
     print("estimete price :", estimate)
 
 
-self.uber_get_price_estimates(client, -23.5598988,)
+
 
 response = client.get_pickup_time_estimates( 
     start_latitude=-23.5891262,
